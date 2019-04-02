@@ -6,14 +6,18 @@ then
 	exit 1;
 fi
 
-assignment=$1
-assignment_name=${assignment:3}
+tes=$2
 
-cmake --build ./build --config Release --target opengl_viewer
+if [ -z "$tes" ]
+then
+	tes=1;
+fi
+
+assignment=$1
+assignment_number=${assignment: -1}
+
 cmake --build ./build --config Release --target $assignment_name
 
-./build/proj/$assignment/$assignment_name -o build/proj/$assignment_name/output
-
-./build/viewer/viewer/opengl_viewer -o build/proj/$assignment_name/output
-
-command -v ffmpeg >/dev/null 2>&1 && ffmpeg -start_number 0 -framerate 50 -i build/proj/$assignment_name/output/_images/%04d.png  -vcodec libx264 -crf 25 -pix_fmt yuv420p -y $assignment_name.mp4
+cd ./assignments/$assignment
+./../../build/assignments/$assignment/assignment$assignment_number $tes
+cd ../..
