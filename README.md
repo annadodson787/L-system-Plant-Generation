@@ -1,4 +1,4 @@
-# COSC 89.18/189.02 Physical Computing Starter Code Manual
+# COSC 77/177 Computer Graphics Starter Code Manual
 
 ## 0. Quick Guide
 
@@ -6,32 +6,25 @@ If you are already experienced with using CMake to generate a C++ project, pleas
 
 ### Code Structure
 
-The starter codebase is organized as `ext`, `src`, `proj`, and `viewer`. We put all external codes (e.g., the Eigen library) in `ext`. We put the common headers that can be shared among different subprojects in `src` (e.g., the classes of particles, mesh, grid, file IO, etc.). The folder `proj` maintains a number of subprojects we will use for demo or assignments. A subproject is dependent on `src` and `ext`, but is independent from any other subproject in `proj`.
+The starter codebase is organized as `ext`, `src`, `assignments` and `tutorials`. We put all external codes (e.g., the Eigen library) in `ext`. We put the common headers that can be shared among different subprojects in `src` (e.g., the classes of mesh, grid, file IO, etc.). The folder `assignments` maintains all assignments. An assignment is dependent on `src` and `ext`, but is independent from other assignments.
 
-Usually, you are asked to write code in one or multiple files in a subproject (e.g., in `proj/a0_hello_world` or in `proj/a1_mass_spring`). You don’t need to change files in ext or src (If you do, make sure to submit them for your assignment and let us know to avoid any compiling issue).
-
-### OpenGL Viewer
-
-The folder viewer maintains the code for the OpenGL viewer that is used to visualize your simulation data. You may think of the viewer as a subproject, which is independent from other subprojects. The difference is, the viewer has its own external dependencies, including `freeglut`, `glm`, and `imgui`, which are all put in `viewer/ext`. The viewer also has its own common headers and source files in `viewer/src/`.
-
-We provide viewer executables for different platforms. But you can also modify and compile the source code to generate your own customized viewer.
+Usually, you are asked to write code in one or multiple files in an assignment folder (e.g., in `assignments/a1/LoopSubdivision.h`). You don’t need to change files in ext or src.
 
 ### Build and Compile
 
-We use CMake to separate the source code and the build files. `CMakeLists.txt` is maintained in each subproject. To generate build files (e.g., an .sln file for Windows or a makefile for Linux), you need to 1) create a `build` folder to hold all subprojects; 2) create a subfolder under build for a specific subproject (e.g., `build/a0_hello_world`); and 3) use CMake to generate the build files (e.g., in `build/a0_hello_world`) based on the source code (e.g., in `proj/a0_hello_world`).
+We use CMake to separate the source code and the build files. `CMakeLists.txt` is maintained in each subproject. To generate build files (e.g., an .sln file for Windows or a makefile for Linux), you need to 1) create a `build` folder to hold all subprojects; 2) create a subfolder under build for a specific subproject (e.g., `build/a1`); and 3) use CMake to generate the build files (e.g., in `build/a0_hello_world`) based on the source code (e.g., in `proj/a1`).
 
 ### Executable
 
-The executables are generated in the Release or Debug folder under the subdirectory (e.g., `build/a0_hello_world/Release`).
+The executables are generated in the Release or Debug folder under the subdirectory (e.g., `build/a1/Release`).
 
-The simulation data is generated in the same folder as the executable. Typically, we specify the argument –o for the folder name of each simulation (e.g., `build/a0_hello_world/Release/output`).
 
-## 1. Compile and run the helloworld project:
+## 1. Compile and run the first assignment:
 
 ### Step 1: Clone the source code from GitLab and enter the codebase folder
 
-    git clone https://gitlab.com/boolzhu/dartmouth-phys-comp-starter
-    cd dartmouth-phys-comp-starter
+    git clone https://gitlab.com/boolzhu/dartmouth-cg-starter-code
+    cd dartmouth-cg-starter-code
 
 ### Step 2: Build the project using CMake:
 
@@ -54,12 +47,12 @@ The simulation data is generated in the same folder as the executable. Typically
 
 To test if everything works correctly you can run:
 
-    .\scripts\run_assignment.bat a0_hello_world 1 [Windows]
-    ./scripts/run_assignment.sh a0_hello_world 1 [Linux/Mac]
+    .\scripts\run_assignment.bat a1 1 [Windows]
+    ./scripts/run_assignment.sh a1 1 [Linux/Mac]
 
 This will:
 
-- Compile the code for the hello world project and any dependencies
+- Compile the code for the assignment 1 and any dependencies
 - Run the assignment and generate simulation data for the given test (`1` is the rod simulation for assignment 1)
 - Open the viewer load the data that was just generated
 	- In the viewer you can press `w` to start recording and `p` to play back the animation
@@ -70,7 +63,7 @@ This will:
 - **Windows**: Open the .sln project file in the `build` folder.
 - **Linux or OSX**: Use your editor of choice to edit the assignment files in `proj`
 
-## 3. Command Line Details
+## 3. Command line details (optional) 
 
 While the `setup` and `run_assignment` scripts should get you up and running quickly, you might want to peek behind the curtains and run the individual parts manually.
 
@@ -86,7 +79,7 @@ The script enters the directory and executes CMake using `cmake ..`. CMake finds
 
 After this runs, you will have a bunch of files and folders in the `build` folder. You might notice that the folder structure mirrors the one in the source folder.
 
-Generally, you can find the build files related to "proj/assignment" in "**build**/proj/assignment". Following this pattern, the build files related to the viewer are in "**build**/viewer/viewer".
+Generally, you can find the build files related to "proj/assignment" in "**build**/proj/assignment". 
 
 ### Build
 
