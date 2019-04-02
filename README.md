@@ -37,7 +37,7 @@ The executables are generated in the Release or Debug folder under the subdirect
 - **OSX**: `brew install cmake` (using [Homebrew](https://brew.sh/))
 
 **Substep 2.1: Install Dependencies (Linux/OSX only)**
-- **Linux**: `sudo apt-get install glew freeglut` (sudo apt-get install freeglut3-dev libglew-dev)
+- **Linux**: `sudo apt-get install freeglut3-dev libglew-dev`
 - **OSX**: `brew install glew freeglut`
 
 **Substep 2.2: Run setup.sh/bat**
@@ -55,9 +55,7 @@ To test if everything works correctly you can run:
 This will:
 
 - Compile the code for the assignment 1 and any dependencies
-- Run the assignment and generate simulation data for the given test (`1` is the rod simulation for assignment 1)
-- Open the viewer load the data that was just generated
-	- In the viewer you can press `w` to start recording and `p` to play back the animation
+- Popup a window and show an OpenGL window
 
 ### Step 4: Start implementing!
 
