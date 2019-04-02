@@ -37,7 +37,7 @@ The executables are generated in the Release or Debug folder under the subdirect
 - **OSX**: `brew install cmake` (using [Homebrew](https://brew.sh/))
 
 **Substep 2.1: Install Dependencies (Linux/OSX only)**
-- **Linux**: `sudo apt-get install glew freeglut`
+- **Linux**: `sudo apt-get install glew freeglut` (sudo apt-get install freeglut3-dev libglew-dev)
 - **OSX**: `brew install glew freeglut`
 
 **Substep 2.2: Run setup.sh/bat**
