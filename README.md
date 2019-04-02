@@ -12,11 +12,13 @@ Usually, you are asked to write code in one or multiple files in an assignment f
 
 ### Build and Compile
 
-We use CMake to separate the source code and the build files. `CMakeLists.txt` is maintained in each subproject. To generate build files (e.g., an .sln file for Windows or a makefile for Linux), you need to 1) create a `build` folder to hold all subprojects; 2) create a subfolder under build for a specific subproject (e.g., `build/a1`); and 3) use CMake to generate the build files (e.g., in `build/a0_hello_world`) based on the source code (e.g., in `proj/a1`).
+We use CMake to separate the source code and the build files. `CMakeLists.txt` is maintained in each subproject. 
+To generate build files (e.g., an .sln file for Windows or a makefile for Linux), you need to 1) create a `build` folder to hold all subprojects; 
+2) use CMake to generate the build files (i.e., run `cmake <path to source>` in the build folder).
 
 ### Executable
 
-The executables are generated in the Release or Debug folder under the subdirectory (e.g., `build/a1/Release`).
+The executables are generated in the Release or Debug folder under the subdirectory (e.g., `build/a1/Release`) for Windows and just in e.g. `build/a1` for Linux/Mac.
 
 
 ## 1. Compile and run the first assignment:
@@ -56,12 +58,11 @@ This will:
 - Run the assignment and generate simulation data for the given test (`1` is the rod simulation for assignment 1)
 - Open the viewer load the data that was just generated
 	- In the viewer you can press `w` to start recording and `p` to play back the animation
-- If you recorded anything and ffmpeg is installed, it will render a video of the simulation once the viewer is closed. This is saved under "assignment name".mp4
 
 ### Step 4: Start implementing!
 
 - **Windows**: Open the .sln project file in the `build` folder.
-- **Linux or OSX**: Use your editor of choice to edit the assignment files in `proj`
+- **Linux or OSX**: Use your editor of choice to edit the assignment files in `assignments`
 
 ## 3. Command line details (optional) 
 
@@ -79,7 +80,7 @@ The script enters the directory and executes CMake using `cmake ..`. CMake finds
 
 After this runs, you will have a bunch of files and folders in the `build` folder. You might notice that the folder structure mirrors the one in the source folder.
 
-Generally, you can find the build files related to "proj/assignment" in "**build**/proj/assignment". 
+Generally, you can find the build files related to "assignment/aN" in "**build**/assignment/aN". 
 
 ### Build
 
@@ -87,6 +88,6 @@ The build step can be done through cmake as well. In the `build` folder, run
 
     cmake --build . --config Release
     
-This will build the viewer as well as all assignments and examples.
+This will build all assignments and examples.
     
 For more details, you can look at the `setup` and `run_assignment` scripts!
