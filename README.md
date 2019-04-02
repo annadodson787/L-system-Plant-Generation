@@ -88,24 +88,5 @@ The build step can be done through cmake as well. In the `build` folder, run
     cmake --build . --config Release
     
 This will build the viewer as well as all assignments and examples.
-
-To run the viewer you can then enter `./viewer/viewer/opengl_viewer` in the command line. You should see the following:
-
-![OpenGL Viewer](doc/img/default_viewer.png)
-
-To use the viewer to visualize your own data, you can simply specify the program argument -o to read your own output folder. 
-We provided 50 frames of cloth simulation data in `viewer\test_data` for you to test the viewer. 
-In the command line, go to the directory of the viewer executable and type `opengl_viewer.exe -o [your path]/dartmouth-phys-comp-starter/viewer/test_data` and you will see a triangle mesh for cloth.
-
-There are four shortcuts in the viewer so far:
-- `p`, play/stop the frames;
-- `r`, return to the first frame;
-- `]`, go to the next frame;
-- `[`, go to the previous frame.
-
-Similarly, you'll find the assignment executables in their respective subfolders in the `build` folder. If you want to run an assignment (here assignment 1) and look at the result the process is the following
-
-    ./proj/a1_mass_spring/mass_spring -o "some output folder" -test "the number of the test you want to run"
-    ./viewer/viewer/opengl_viewer -o "the output folder you specified above"
     
 For more details, you can look at the `setup` and `run_assignment` scripts!
