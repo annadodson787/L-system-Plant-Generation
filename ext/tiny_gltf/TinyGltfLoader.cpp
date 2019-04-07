@@ -88,7 +88,7 @@ void Read_From_Gltf_File(
 	for (int i = 0; i < model.nodes.size(); i++) {
 		auto& node = model.nodes[i];
 
-		T_SCENEGRAPH::Node out_node = {};
+		SceneGraph<3>::Node out_node = {};
 		
 		if (node.translation.size() != 0) {
 			out_node.pos = glm::vec3{ (float)node.translation[0], (float)node.translation[1], (float)node.translation[2] };

@@ -174,12 +174,13 @@ void OpenGLWindow::Initialize_OpenGL()
 
     if(glewInit() != GLEW_OK){std::cerr<<"Error: [OpenGLWindow] Cannot initialize glew"<<std::endl;return;}
 
-
 	glEnable(GL_DEPTH_TEST);
 	glFrontFace(GL_CCW);
 
+#ifndef __APPLE__
 	glEnable(GL_MULTISAMPLE);
 	glHint(GL_MULTISAMPLE_FILTER_HINT_NV, GL_NICEST);
+#endif
 
 	Initialize_Camera();
 	Initialize_Ubos();
