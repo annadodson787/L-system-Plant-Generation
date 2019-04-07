@@ -23,7 +23,7 @@
 
 class MeshDriver : public Driver, public OpenGLViewer
 {using Base=Driver;
-	OpenGLTriangleMesh* opengl_tri_mesh=nullptr;						////bunny
+	OpenGLTriangleMesh* opengl_tri_mesh=nullptr;						////mesh
 	TriangleMesh<3>* tri_mesh=nullptr;
 	OpenGLSegmentMesh* opengl_normals=nullptr;							////normals
 	OpenGLSegmentMesh* opengl_edges=nullptr;							////edges

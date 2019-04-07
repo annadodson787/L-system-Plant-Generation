@@ -88,11 +88,11 @@ source_group("stb" FILES ${stb_cpp} ${stb_h})
 include_directories(${root_path}/ext/stb)
 
 #include tiny_gltf
-file(GLOB_RECURSE tiny_gltf_cpp ${root_path}/ext/tiny_gltf/*.cpp)
-file(GLOB_RECURSE tiny_gltf_h ${root_path}/ext/tiny_gltf/*.h ${root_path}/ext/tiny_gltf/*.hpp)
-list(APPEND src_files ${tiny_gltf_cpp} ${tiny_gltf_h})
-source_group("tiny_gltf" FILES ${tiny_gltf_cpp} ${tiny_gltf_h})
-include_directories(${root_path}/ext/tiny_gltf)
+#file(GLOB_RECURSE tiny_gltf_cpp ${root_path}/ext/tiny_gltf/*.cpp)
+#file(GLOB_RECURSE tiny_gltf_h ${root_path}/ext/tiny_gltf/*.h ${root_path}/ext/tiny_gltf/*.hpp)
+#list(APPEND src_files ${tiny_gltf_cpp} ${tiny_gltf_h})
+#source_group("tiny_gltf" FILES ${tiny_gltf_cpp} ${tiny_gltf_h})
+#include_directories(${root_path}/ext/tiny_gltf)
 
 #set compiling flags
 set(CMAKE_CXX_STANDARD 11)	#c++11
