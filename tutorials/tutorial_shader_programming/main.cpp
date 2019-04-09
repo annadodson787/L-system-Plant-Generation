@@ -57,7 +57,7 @@ public:
 
 	void Sync_Simulation_And_Visualization_Data()
 	{
-		opengl_tri_mesh->model_matrix = rotate(opengl_tri_mesh->model_matrix, (float)dt * 10.0f, vec3(0.0f, 1.0f, 0.0f));
+		//opengl_tri_mesh->model_matrix = rotate(opengl_tri_mesh->model_matrix, (float)dt * 10.0f, vec3(0.0f, 1.0f, 0.0f));
 	}
 
 	virtual void Toggle_Next_Frame()
