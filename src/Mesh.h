@@ -301,8 +301,23 @@ template<int d> void Get_Edges(const TriangleMesh<d>& mesh,Array<Vector2i>& edge
 
 template<int d> void Subdivide(TriangleMesh<d>* mesh)
 {
-	////remove the implementation temporally
-	std::cerr<<"Subdivision() not implemented"<<std::endl;
+	Array<Vector2i> edges;Get_Edges(*mesh,edges);
+	Hashtable<Vector2i,int> edge_vtx_hashtable;
+	for(const auto& e:edges){
+		Vector<real,d> pos=(real).5*(mesh->Vertices()[e[0]]+mesh->Vertices()[e[1]]);
+		mesh->Vertices().push_back(pos);
+		int i=(int)mesh->Vertices().size()-1;
+		edge_vtx_hashtable.insert(std::make_pair(e,i));}
+
+	auto n=mesh->elements.size();
+	for(auto i=0;i<n;i++){const Vector3i v=mesh->elements[i];int v3,v4,v5;
+		{auto search=edge_vtx_hashtable.find(Sorted(Vector2i(v[0],v[1])));if(search==edge_vtx_hashtable.end())continue;v3=search->second;}
+		{auto search=edge_vtx_hashtable.find(Sorted(Vector2i(v[1],v[2])));if(search==edge_vtx_hashtable.end())continue;v4=search->second;}
+		{auto search=edge_vtx_hashtable.find(Sorted(Vector2i(v[2],v[0])));if(search==edge_vtx_hashtable.end())continue;v5=search->second;}
+		mesh->elements.push_back(Vector3i(v[0],v3,v5));
+		mesh->elements.push_back(Vector3i(v3,v[1],v4));
+		mesh->elements.push_back(Vector3i(v5,v4,v[2]));
+		mesh->elements[i]=Vector3i(v3,v4,v5);}
 }
 
 inline void Initialize_Icosahedron_Mesh(const real scale,TriangleMesh<3>* mesh)

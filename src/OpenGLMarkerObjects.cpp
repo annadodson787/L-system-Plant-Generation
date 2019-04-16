@@ -3,7 +3,7 @@
 // Copyright (c) (2018-), Bo Zhu, boolzhu@gmail.com
 // This file is part of SLAX, whose distribution is governed by the LICENSE file.
 //#####################################################################
-#include <GL/glew.h>
+#include <glad.h>
 #include <GL/freeglut.h>
 #include "OpenGLBufferObjects.h"
 #include "OpenGLMarkerObjects.h"
@@ -148,13 +148,11 @@ void OpenGLTriangle::Display() const
 {
 	std::shared_ptr<OpenGLShaderProgram> shader=shader_programs[0];
 	shader->Begin();
-	glPushAttrib(GL_LINE_BIT);
 	Bind_Uniform_Block_To_Ubo(shader,"camera");
 	glLineWidth(line_width);
 	shader->Set_Uniform_Vec4f("color",color.rgba);
 	glBindVertexArray(vao);
 	glDrawArrays(GL_LINE_LOOP,0,vtx_size/4);
-	glPopAttrib();
 	shader->End();
 }
 
@@ -179,13 +177,11 @@ void OpenGLPolygon::Display() const
 {
 	std::shared_ptr<OpenGLShaderProgram> shader=shader_programs[0];
 	shader->Begin();
-	glPushAttrib(GL_LINE_BIT);
 	Bind_Uniform_Block_To_Ubo(shader,"camera");
 	glLineWidth(line_width);
 	shader->Set_Uniform_Vec4f("color",color.rgba);
 	glBindVertexArray(vao);
 	glDrawArrays(GL_LINE_LOOP,0,vtx_size/4);
-	glPopAttrib();
 	shader->End();
 }
 

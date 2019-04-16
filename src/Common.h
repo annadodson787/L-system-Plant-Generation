@@ -14,6 +14,8 @@
 #include <gtc/quaternion.hpp>
 #include <gtx/quaternion.hpp>
 
+using namespace glm;
+
 
 //////////////////////////////////////////////////////////////////////////
 ////Eigen basic types

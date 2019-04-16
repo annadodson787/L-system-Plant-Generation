@@ -8,7 +8,7 @@
 #include <iomanip>
 #include <map>
 #include <functional>
-#include <GL/glew.h>
+#include <glad.h>
 #include "Common.h"
 #include "OpenGLCommon.h"
 

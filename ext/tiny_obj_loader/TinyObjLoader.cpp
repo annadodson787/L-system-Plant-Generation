@@ -41,14 +41,19 @@ template<class T_MESH> void Read_From_Obj_File(const std::string& file_name,Arra
 						(real)attrib.vertices[v0.vertex_index * 3 + 1],
 						(real)attrib.vertices[v0.vertex_index * 3 + 2]));
 
-			meshes[i]->normals->push_back(
-				Vector3((real)attrib.normals[v0.normal_index * 3 + 0],
-						(real)attrib.normals[v0.normal_index * 3 + 1],
-						(real)attrib.normals[v0.normal_index * 3 + 2]));
+			if (attrib.normals.size() > 0) {
+				meshes[i]->normals->push_back(
+					Vector3((real)attrib.normals[v0.normal_index * 3 + 0],
+							(real)attrib.normals[v0.normal_index * 3 + 1],
+							(real)attrib.normals[v0.normal_index * 3 + 2]));
+			}
 
-			meshes[i]->uvs->push_back(
-				Vector2((real)attrib.texcoords[v0.texcoord_index * 2 + 0],
-						1.0 - (real)attrib.texcoords[v0.texcoord_index * 2 + 1]));
+			if (attrib.texcoords.size() > 0) {
+				meshes[i]->uvs->push_back(
+					Vector2((real)attrib.texcoords[v0.texcoord_index * 2 + 0],
+							1.0 - (real)attrib.texcoords[v0.texcoord_index * 2 + 1]));
+
+			}
 
 			if (f % 3 == 0) {
 				meshes[i]->elements.push_back(Vector3i(f + 0, f + 1, f + 2));

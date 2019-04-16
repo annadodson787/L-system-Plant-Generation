@@ -145,7 +145,7 @@ void OpenGLWindow::Initialize_Window()
 #else
 	glutInitContextVersion(4, 2);
 	glutInitContextFlags(GLUT_DEBUG);
-	glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
+	glutInitContextProfile(GLUT_CORE_PROFILE);
 	glutSetOption(GLUT_MULTISAMPLE, 8);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_ALPHA);
 #endif
@@ -168,19 +168,18 @@ void OpenGLWindow::Initialize_Window()
 
 void OpenGLWindow::Initialize_OpenGL()
 {
-	GLint major_version;glGetIntegerv(GL_MAJOR_VERSION,&major_version);
-	GLint minor_version;glGetIntegerv(GL_MINOR_VERSION,&minor_version);
-	std::cout<<"Opengl major version: "<<major_version<<", minor version: "<<minor_version<<std::endl;
+	if (!gladLoadGL()) {
+		std::cerr << "Error: [OpenGLWindow] Cannot initialize glad" << std::endl; 
+		return;
+	}
 
-    if(glewInit() != GLEW_OK){std::cerr<<"Error: [OpenGLWindow] Cannot initialize glew"<<std::endl;return;}
+	std::cout << "Opengl major version: " << GLVersion.major << ", minor version: " << GLVersion.minor << std::endl;
 
 	glEnable(GL_DEPTH_TEST);
 	glFrontFace(GL_CCW);
 
-#ifndef __APPLE__
 	glEnable(GL_MULTISAMPLE);
 	glHint(GL_MULTISAMPLE_FILTER_HINT_NV, GL_NICEST);
-#endif
 
 	Initialize_Camera();
 	Initialize_Ubos();
@@ -199,7 +198,7 @@ void OpenGLWindow::Display()
 	if(display_offscreen)Display_Offscreen();
 
 	GLenum gl_error=glGetError();
-	if(gl_error!=GL_NO_ERROR){std::cerr<<"Error: [OpenGLWindow] "<<gluErrorString(gl_error)<<std::endl;}
+	if(gl_error!=GL_NO_ERROR){std::cerr<<"Error: [OpenGLWindow] "<< (const char*)gluErrorString(gl_error)<<std::endl;}
 }
 
 void OpenGLWindow::Preprocess()
@@ -268,7 +267,7 @@ void OpenGLWindow::Display_Text()
     auto camera=Get_Camera_Ubo();
     glm::mat4& ortho=camera->object.ortho;
 
-    glPushAttrib(GL_ENABLE_BIT);
+    /*glPushAttrib(GL_ENABLE_BIT);
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
 
@@ -290,7 +289,7 @@ void OpenGLWindow::Display_Text()
     glPopAttrib();
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);
-    glPopMatrix();
+    glPopMatrix();*/
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

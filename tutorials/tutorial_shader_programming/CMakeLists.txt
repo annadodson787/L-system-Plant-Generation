@@ -27,7 +27,9 @@ source_group("src" FILES ${src_cpp} ${src_h})
 include_directories(${root_path}/src)
 	
 #include hearder and source files in /proj/a*
-list(APPEND src_files main.cpp)
+file(GLOB_RECURSE proj_cpp ${proj_src_path}/*.cpp)
+file(GLOB_RECURSE proj_h ${proj_src_path}/*.h)
+list(APPEND src_files ${proj_cpp} ${proj_h})
 source_group("proj" FILES ${proj_cpp} ${proj_h})
 include_directories(${proj_path}/src)
 
@@ -40,19 +42,11 @@ if(WIN32)
 	set(freeglut_lib_path ${root_path}/ext/freeglut/lib/x64)
 	include_directories(${freeglut_src_path})
 
-	set(glew_libs ${freeglut_lib_path}/glew32.lib)
-	list(APPEND lib_files ${glew_libs})
 	set(glut_libs debug ${freeglut_lib_path}/freeglutd.lib optimized ${freeglut_lib_path}/freeglut.lib)
 	message(STATUS ${glut_libs})
 	list(APPEND lib_files ${glut_libs})
-
+		
 elseif(APPLE)  #freeglut and glew are installed on macos by "brew install freeglut glew"
-	find_package(GLEW REQUIRED)
-	if (GLEW_FOUND)
-    		include_directories(${GLEW_INCLUDE_DIRS})
-    		link_libraries(${GLEW_LIBRARIES})
-	endif()
-
 	find_package(GLUT REQUIRED)
 	if (GLUT_FOUND)
     		include_directories(${GLUT_INCLUDE_DIRS})
@@ -66,9 +60,9 @@ elseif(APPLE)  #freeglut and glew are installed on macos by "brew install freegl
 
 	list(APPEND lib_files ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 
-elseif(UNIX) #freeglut and glew are installed on linux by "sudo apt-get install freeglut3-dev libglew-dev"
-	set(GCC_COVERAGE_COMPILE_FLAGS "${GCC_COVERAGE_COMPILE_FLAGS} -lGL -lglut -lGLU -lGLEW")
-	set(GCC_COVERAGE_LINK_FLAGS "${GCC_COVERAGE_LINK_FLAGS} -lGL -lglut -lGLU -lGLEW")
+elseif(UNIX) #freeglut and glew are installed on linux by "sudo apt-get install freeglut3-dev"
+	set(GCC_COVERAGE_COMPILE_FLAGS "${GCC_COVERAGE_COMPILE_FLAGS} -lGL -lglut -lGLU -ldl")
+	set(GCC_COVERAGE_LINK_FLAGS "${GCC_COVERAGE_LINK_FLAGS} -lGL -lglut -lGLU -ldl")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 	set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} ${GCC_COVERAGE_LINK_FLAGS}")
 endif(WIN32)
@@ -109,7 +103,6 @@ add_executable(${proj_name} ${src_files})
 target_link_libraries(${proj_name} ${lib_files})
 
 set_property(TARGET ${proj_name} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-
 
 if(WIN32)
 	add_custom_command(TARGET ${proj_name} PRE_BUILD

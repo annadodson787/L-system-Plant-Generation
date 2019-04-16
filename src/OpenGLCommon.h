@@ -6,7 +6,8 @@
 #ifndef __OpenGLCommon_h__
 #define __OpenGLCommon_h__
 #include "Common.h"
-#include <GL/glew.h>
+
+#include <glad.h>
 
 ////Callback function object
 #define Define_Function_Object(class_name,function_name) \

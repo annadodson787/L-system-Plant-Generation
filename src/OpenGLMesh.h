@@ -75,15 +75,11 @@ class OpenGLSegmentMesh : public OpenGLMesh<SegmentMesh<3> >
 		GLfloat old_line_width;glGetFloatv(GL_LINE_WIDTH,&old_line_width);
 		{std::shared_ptr<OpenGLShaderProgram> shader=shader_programs[0];
 		shader->Begin();
-		#ifndef __APPLE__
 		glLineWidth(line_width);
-		#endif
 		OpenGLUbos::Bind_Uniform_Block_To_Ubo(shader,"camera");
 		glBindVertexArray(vao);
 		glDrawElements(GL_LINES,ele_size,GL_UNSIGNED_INT,0);
-		#ifndef __APPLE__
 		glLineWidth(old_line_width);
-		#endif
 		shader->End();}
     }
 };

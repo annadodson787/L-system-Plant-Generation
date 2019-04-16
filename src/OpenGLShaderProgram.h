@@ -6,7 +6,7 @@
 #ifndef __OpenGLShaderProgram_H__
 #define __OpenGLShaderProgram_H__
 #include <string>
-#include <GL/glew.h>
+#include <glad.h>
 #include "glm.hpp"
 #include "Common.h"
 #include "das_file_watcher.h"

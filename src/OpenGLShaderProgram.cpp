@@ -24,9 +24,9 @@ const std::string version=To_String(
 
 const std::string material=To_String(
 uniform vec4 mat_amb=vec4(1.f);
-uniform vec4 mat_dif=vec4(.2f,.2f,.2f,1.f);
+uniform vec4 mat_dif=vec4(1.f,1.f,1.f,1.f);
 uniform vec4 mat_spec=vec4(1.f);
-uniform vec4 mat_shinness=vec4(0.f,0.f,0.f,0.f);
+uniform vec4 mat_shinness=vec4(32.f,0.f,0.f,0.f);
 );
 
 const std::string phong_dl_func=To_String(
@@ -46,7 +46,7 @@ vec3 phong_pl(int i,vec3 pos,vec3 norm)
 	vec4 amb=lt[i].amb*mat_amb;
 	vec3 light_dir=lt[i].pos.xyz-pos;float dis=length(light_dir);light_dir=light_dir/dis;
     float dif_coef=max(dot(norm,light_dir),0.f);
-    vec4 dif=dif_coef*vec4(.5,.5,.5,1.);
+    vec4 dif=dif_coef*mat_dif;
 	vec3 view_dir=normalize(position.xyz-pos);
 	vec3 half_dir=normalize(light_dir+view_dir);
 	float spec_coef=pow(max(dot(norm,half_dir),0.f),mat_shinness[0]);

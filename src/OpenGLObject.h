@@ -6,7 +6,7 @@
 #ifndef __OpenGLObject_h__
 #define __OpenGLObject_h__
 #include <memory>
-#include <GL/glew.h>
+#include <glad.h>
 #include "OpenGLCommon.h"
 
 ////Forward declaration
