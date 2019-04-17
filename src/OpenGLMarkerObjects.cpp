@@ -4,7 +4,6 @@
 // This file is part of SLAX, whose distribution is governed by the LICENSE file.
 //#####################################################################
 #include <glad.h>
-#include <GL/freeglut.h>
 #include "OpenGLBufferObjects.h"
 #include "OpenGLMarkerObjects.h"
 
