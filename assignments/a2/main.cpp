@@ -45,10 +45,10 @@ public:
 
 		////set lights
 		auto dir_light = OpenGLUbos::Add_Directional_Light(glm::vec3(-1.f, -1.f, -1.f));
-		dir_light->dif = glm::vec4(4.0, 4.0, 5.0, 1.0);
+		dir_light->dif = glm::vec4(4.0, 4.0, 5.0, 1.0) * 0.2f;
 
 		dir_light = OpenGLUbos::Add_Directional_Light(glm::vec3(1.f, -1.f, -1.f));
-		dir_light->dif = glm::vec4(4.0, 2.0, 1.0, 1.0);
+		dir_light->dif = glm::vec4(4.0, 2.0, 1.0, 1.0) * 0.2f;
 
 		OpenGLUbos::Set_Ambient(glm::vec4(.01f, .01f, .02f, 1.f));
 		OpenGLUbos::Update_Lights_Ubo();
