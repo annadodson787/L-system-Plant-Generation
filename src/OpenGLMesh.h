@@ -75,10 +75,15 @@ class OpenGLSegmentMesh : public OpenGLMesh<SegmentMesh<3> >
 		GLfloat old_line_width;glGetFloatv(GL_LINE_WIDTH,&old_line_width);
 		{std::shared_ptr<OpenGLShaderProgram> shader=shader_programs[0];
 		shader->Begin();
+		// On MacOSX only 1.0f is a valid line width
+#ifndef __APPLE__
 		glLineWidth(line_width);
+#endif
+		glDisable(GL_DEPTH_TEST);
 		OpenGLUbos::Bind_Uniform_Block_To_Ubo(shader,"camera");
 		glBindVertexArray(vao);
 		glDrawElements(GL_LINES,ele_size,GL_UNSIGNED_INT,0);
+		glEnable(GL_DEPTH_TEST);
 		glLineWidth(old_line_width);
 		shader->End();}
     }
@@ -135,6 +140,7 @@ class OpenGLColoredSegmentMesh : public OpenGLMesh<SegmentMesh<3> >
 		glBindVertexArray(vao);
 		glDrawArrays(GL_LINES,0,vtx_size/8);
         glLineWidth(old_line_width);
+
 		shader->End();}
     }
 
