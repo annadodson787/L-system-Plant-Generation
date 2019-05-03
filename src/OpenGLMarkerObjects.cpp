@@ -22,7 +22,7 @@ OpenGLBackground::OpenGLBackground()
 void OpenGLBackground::Initialize()
 {
 	Base::Initialize();
-	Add_Shader_Program(OpenGLShaderLibrary::Get_Shader("gcolor_bk"));	////gradient color
+	Add_Shader_Program(OpenGLShaderLibrary::Get_Shader(shader_name));	////gradient color
 
 	Update_Data_To_Render_Pre();
 

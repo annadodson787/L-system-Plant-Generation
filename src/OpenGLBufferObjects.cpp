@@ -337,7 +337,6 @@ Light* Add_Directional_Light(const glm::vec3& dir)
 	lt->Set_Directional();
 	lt->dir=glm::vec4(dir,1.f);
 	lt->pos=glm::vec4(-dir*2.f,1.f);
-
 	Update_Lights_Ubo();return lt;
 }
 

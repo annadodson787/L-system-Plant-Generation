@@ -282,7 +282,8 @@ class OpenGLTriangleMesh : public OpenGLMesh<TriangleMesh<3> >
 				glDisable(GL_POLYGON_OFFSET_FILL);
 				shader->End();
 			}
-		}break;}
+		}break;	
+		}
     }
 };
 #endif

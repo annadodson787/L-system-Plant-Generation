@@ -13,6 +13,7 @@ class OpenGLBackground : public OpenGLObject
 {public:typedef OpenGLObject Base;
 	Box<2> box;	
 	std::string tex_name;
+	std::string shader_name="gcolor_bk";
 	real depth;
 	bool use_fbo_tex;
 

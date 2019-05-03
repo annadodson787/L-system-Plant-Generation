@@ -40,7 +40,7 @@ void OpenGLViewer::Add_OpenGL_Object(OpenGLObject* object)
 void OpenGLViewer::Initialize_Common_Data()
 {
 	opengl_window->use_2d_display=use_2d_display;
-	if(draw_bk)Add_Interactive_Object<OpenGLBackground>(/*init*/true);
+	//if(draw_bk)Add_Interactive_Object<OpenGLBackground>(/*init*/true);
 	if(draw_axes){
 		auto axes=Add_Interactive_Object<OpenGLAxes>();
 		axes->use_2d_display=use_2d_display;axes->Initialize();}
