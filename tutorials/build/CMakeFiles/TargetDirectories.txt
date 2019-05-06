@@ -1,0 +1,10 @@
+/Users/dali/Documents/dartmouth-cg-starter-code/build/CMakeFiles/rebuild_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/CMakeFiles/edit_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/CMakeFiles/rebuild_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/CMakeFiles/edit_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a1/CMakeFiles/rebuild_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a1/CMakeFiles/edit_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a1/CMakeFiles/assignment1.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a2/CMakeFiles/rebuild_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a2/CMakeFiles/edit_cache.dir
+/Users/dali/Documents/dartmouth-cg-starter-code/build/assignments/a2/CMakeFiles/assignment2.dir

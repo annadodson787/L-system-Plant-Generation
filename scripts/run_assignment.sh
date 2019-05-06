@@ -19,5 +19,5 @@ assignment_number=${assignment: -1}
 cmake --build ./build --config Release --target $assignment_name
 
 cd ./assignments/$assignment
-./../../build/assignments/$assignment/assignment$assignment_number $tes
+./../../build/assignments/$assignment/$assignment $tes
 cd ../..
